@@ -238,7 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     
     try {
         
-        $pdo = new PDO('mysql:host=localhost;dbname=form_db;charset=utf8', 'root', '');
+        $pdo = new PDO('mysql:host=localhost;dbname=form_db;charset=utf8', 'u82560', '3961962');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
         $pdo->beginTransaction();
