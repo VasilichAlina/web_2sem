@@ -146,25 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ' . $_SERVER['PHP_SELF']);
         exit;
     }
-}
-            // Здесь должна быть ваша логика вставки в БД (как в предыдущем коде)
-            // ...
-            
-            saveToCookiePermanent($_POST);
-            $_SESSION['success_msg'] = true;
-            header('Location: ' . $_SERVER['PHP_SELF']);
-            exit;
-        } catch (PDOException $e) {
-            $errors['database'] = 'Ошибка базы данных';
-        }
-    }
-
-    if (!empty($errors)) {
-        setErrorCookie($errors);
-        setValuesCookie($_POST);
-        header('Location: ' . $_SERVER['PHP_SELF']);
-        exit;
-    }
 } else {
     $errors = getErrorCookie();
     $tempValues = getValuesCookie();
@@ -340,4 +321,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </body>
 </html>
-
