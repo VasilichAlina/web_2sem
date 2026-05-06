@@ -1,13 +1,18 @@
 <?php
 session_start();
 
-if (isset($_GET['edit_id']) && isset($_SESSION['admin_auth'])) { 
-    // Если админ пришел редактировать пользователя
+// Проверяем: пришел ли админ редактировать пользователя
+// Важно: имя ключа сессии должно совпадать с тем, что в admin.php (is_admin)
+if (isset($_GET['edit_id']) && !empty($_SESSION['is_admin'])) {
     $_SESSION['user_id'] = $_GET['edit_id'];
+    
+    // Перезагружаем страницу на саму себя без GET-параметров, 
+    // чтобы в адресной строке не висело ?edit_id=...
+    header('Location: ./index.php');
+    exit; 
 }
 
 header('Content-Type: text/html; charset=UTF-8');
-
 /**
 * --- НАСТРОЙКИ ПОДКЛЮЧЕНИЯ ---
 */
